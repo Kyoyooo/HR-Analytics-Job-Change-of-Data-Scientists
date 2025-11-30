@@ -44,6 +44,9 @@ def plot_categorical_vs_target(data, col_name, target_col='target'):
     plt.show()
 
 def analyze_experience_impact(exp_col, target):    
+    """
+    Vẽ biểu đồ phân tích môi liên hệ giữa kinh nghiệm và khả năng thay đổi công việc 
+    """
     # Nhóm 1: Có kinh nghiệm liên quan
     has_exp_mask = (exp_col == 'Has relevent experience')
     rate_has_exp = np.mean(target[has_exp_mask]) * 100
@@ -79,6 +82,9 @@ def analyze_experience_impact(exp_col, target):
     print(f"Tỷ lệ của nhóm chưa có kinh nghiệm: {rate_no_exp:.2f}% (Số lượng: {count_no})")
 
 def analyze_last_new_job(last_job, target):    
+    """
+    Vẽ biểu đồ phân tích môi liên hệ giữa thời gian kể từ lần cuối thay đổi công việc trước đó và khả năng thay đổi công việc hiện tại 
+    """
     # Lọc bỏ giá trị thiếu hoặc trống
     mask_valid = (last_job != '') & (last_job != 'nan')
     last_job = last_job[mask_valid]
@@ -124,7 +130,9 @@ def analyze_last_new_job(last_job, target):
         print(f"Nhóm {label}: {rate:.2f}% (Số lượng: {count})")
 
 def plot_loss_curve(losses):
-    """Vẽ đường Loss khi training"""
+    """
+    Vẽ biểu đồ Loss khi huấn luyện mô hình
+    """
     plt.figure(figsize=(10, 5))
     plt.plot(losses, label='Training Loss')
     plt.title('Hàm mất mát qua các vòng lặp (Gradient Descent)')
